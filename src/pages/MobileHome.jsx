@@ -13,7 +13,7 @@ function MobileHome() {
         </div> */}
   
         {/* Welcome Content */}
-        <div className="absolute z-10 flex flex-col items-center justify-center h-full bg-black bg-opacity-50">
+        <div className="absolute z-10 flex flex-col items-center justify-center h-full bg-black bg-opacity-60">
           {/* Logo */}
           <img
             className="h-12 w-12 mb-4"

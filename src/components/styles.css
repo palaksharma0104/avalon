@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.title {
+  max-width: 6rem;
+  line-height: 1.3;
+  cursor: default;
+  .highlight {
+    display: inline-block;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: perspective(300px) skewX(10deg) rotateX(10deg) rotateY(20deg) scale(1.15);
+      background-image: linear-gradient( 78deg, #f7d336 30%, #8ae99c );
+      z-index: -1;
+      transition: all 0.3s;
+      border-radius: 0.2rem;
+    }
+    &:hover:before {
+      transform: perspective(300px) skewX(-5deg) rotateX(-10deg) rotateY(-5deg) scale(1.2);
+    }
+  }
+  .text {
+    display: inline-block;
+    transform: translateZ(100px);
+  }
+}

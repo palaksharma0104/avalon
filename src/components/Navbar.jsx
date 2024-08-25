@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import './styles.css';
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,18 +31,33 @@ function Navbar() {
             src="https://cdn-icons-png.flaticon.com/512/2111/2111425.png"
             alt="Logo"
           />
-          <a href=""><span className="ml-3 text-xl font-semibold text-amber-600 hover:text-amber-400 transition-all duration-200 ease-in-out">Avalon</span></a>
+
+        <div className="title">
+        <span className="highlight">
+            <a href=""><span className="text ml-3 text-xl font-semibold text-amber-600 hover:text-amber-400 hover:font-bold transition-all duration-200 ease-in-out">Avalon</span></a>
+        </span>
+        </div>
+
+
+
+        
+        
+            
+        </div>
+
+
+
         </div>
 
         {/* Center Section - Links */}
         <div className="flex space-x-8">
-          <a href="#" className="text-gray-900 hover:text-gray-600 transition-all duration-200 ease-in-out">
+          <a href="#" className="text-gray-900 hover:text-gray-600 hover:font-bold transition-all duration-200 ease-in-out">
             Today
           </a>
-          <a href="#" className="text-gray-900 hover:text-gray-600 transition-all duration-200 ease-in-out">
+          <a href="#" className="text-gray-900 hover:text-gray-600 hover:font-bold transition-all duration-200 ease-in-out">
             Explore
           </a>
-          <a href="#" className="text-gray-900 hover:text-gray-600 transition-all duration-200 ease-in-out">
+          <a href="#" className="text-gray-900 hover:text-gray-600 hover:font-bold transition-all duration-200 ease-in-out">
             About
           </a>
         </div>
