@@ -6,18 +6,14 @@ function App() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Function to check if screen is mobile size
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768); // Assuming mobile width is <= 768px
+      setIsMobile(window.innerWidth <= 500);
     };
 
-    // Initial check
     checkMobile();
 
-    // Add event listener to detect window resize
     window.addEventListener("resize", checkMobile);
 
-    // Cleanup listener on unmount
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
@@ -29,8 +25,10 @@ function App() {
         <div>you are on ur phone</div>
       ) : (
         <>
-          <Navbar />
-          <h1>you are on web</h1>
+          <body className="bg-white h-[200em]">
+            <Navbar />
+            <h1>you are on web</h1>
+          </body>
         </>
       
       )}
