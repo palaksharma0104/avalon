@@ -32,7 +32,7 @@ function Navbar() {
                     alt="Logo"
                 />
 
-                <div className="title ml-5 hover:scale-110 transition-all duration-200 ease-in-out">
+                <div className="title ml-5 hover:scale-110 transition-scale duration-200 ease-in-out">
                     <span className="highlight">
                         <span className="text text-xl mx-2 mb-1 font-semibold text-amber-600 hover:text-amber-700 cursor-pointer">Avalon</span>
                     </span>
