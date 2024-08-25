@@ -1,3 +1,2 @@
 # Avalon flywheel
-
-- G
+-G
