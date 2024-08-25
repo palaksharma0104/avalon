@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar"
+import MobileHome from "./pages/MobileHome";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -21,20 +22,17 @@ function App() {
   return (
     <>
 
-      { isMobile ? (
-        <div>you are on ur phone</div>
+      {isMobile ? (
+        
+        <MobileHome />
       ) : (
         <>
           <body className="bg-white h-[200em]">
             <Navbar />
-            <h1>you are on web</h1>
           </body>
         </>
       
       )}
-
-
-    
     </>
   )
 }
