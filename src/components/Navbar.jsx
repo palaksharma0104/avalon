@@ -26,11 +26,11 @@ function Navbar() {
         
             {/* Left Section - Logo */}
             <div className="flex items-center">
-                <img
+                {/* <img
                     className="h-8 w-8"
                     src="https://cdn-icons-png.flaticon.com/512/2111/2111425.png"
                     alt="Logo"
-                />
+                /> */}
 
                 <div className="title ml-5 hover:scale-110 transition-scale duration-200 ease-in-out">
                     <span className="highlight">
@@ -55,10 +55,10 @@ function Navbar() {
 
             {/* Login / SignUp */}
             <div className="flex space-x-4">
-                <button className="px-4 py-2 items-center bg-amber-500 text-white rounded-full hover:bg-amber-300 transition-all duration-200 ease-in-out">
+                <button className="px-4 py-2 items-center bg-amber-600 text-white rounded-full hover:bg-amber-400 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out">
                     Log in
                 </button>
-                <button className="px-4 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 transition-all duration-200 ease-in-out">
+                <button className="px-4 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out">
                     Sign up
                 </button>
             </div>
