@@ -26,7 +26,7 @@ function App() {
         <MobileHome />
       ) : (
         <>
-          <body className="bg-white h-[200em]">
+          <body className="h-[200em]">
             <Navbar />
             <BrowserRouter>
               <Routes>
