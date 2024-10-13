@@ -5,9 +5,7 @@ import CardFlip from "./components/CardFlip";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 function App() {
-
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -22,32 +20,26 @@ function App() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-
   return (
     <>
-
       {isMobile ? (
         <MobileHome />
       ) : (
         <>
-        <body className="bg-white h-[200em]">
-        <Navbar />
-        {/* <div className="flex items-center mt-24"> */}
-          <BrowserRouter>
-            <Routes>
-              <Route path='/' element={<Homepage />}>
-              </Route>
+          <body className="bg-white h-[200em]">
+            <Navbar />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Homepage />}></Route>
 
-              <Route path='/flipper' element={<CardFlip />}/>
-            </Routes>
-          </BrowserRouter>
-          {/* </div> */}
+                <Route path="/flipper" element={<CardFlip />} />
+              </Routes>
+            </BrowserRouter>
           </body>
         </>
-      
       )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;

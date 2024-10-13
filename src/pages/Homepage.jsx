@@ -4,17 +4,16 @@ import { motion } from "framer-motion";
 import SpaceCity1 from "../assets/SpaceCity1.jpg";
 
 function Homepage() {
-  // Create an array of states for each card
+  // Array-based state for all cards
   const [flippedCards, setFlippedCards] = useState([false, false, false]);
 
-  // Function to flip in a specific card
+  // Handler functions that take the index of the card to flip
   function handleFlipIn(index) {
     setFlippedCards((prev) =>
       prev.map((flipped, i) => (i === index ? true : flipped))
     );
   }
 
-  // Function to flip out a specific card
   function handleFlipOut(index) {
     setFlippedCards((prev) =>
       prev.map((flipped, i) => (i === index ? false : flipped))
@@ -23,33 +22,71 @@ function Homepage() {
 
   return (
     <div className="grid grid-cols-3 gap-8 mx-auto w-full px-10 md:px-20 lg:px-36 mt-40">
-      {[1, 2, 3].map((card, index) => (
-        <div
-          key={index}
-          className="flip-card grid-item rounded-md"
-          onPointerOver={() => handleFlipIn(index)}
-          onPointerOut={() => handleFlipOut(index)}
+      {/* Card 1 */}
+      <div
+        className="flip-card grid-item rounded-md"
+        onPointerOver={() => handleFlipIn(0)}
+        onPointerOut={() => handleFlipOut(0)}
+      >
+        <motion.div
+          className="flip-card-inner w-[100%] h-[100%]"
+          initial={false}
+          animate={{ rotateY: flippedCards[0] ? 180 : 0 }}
+          transition={{ duration: 0.6, animationDirection: "normal" }}
         >
-          <motion.div
-            className="flip-card-inner w-[100%] h-[100%]"
-            initial={false}
-            animate={{ rotateY: flippedCards[index] ? 180 : 0 }}
-            transition={{ duration: 0.6, animationDirection: "normal" }}
-          >
-            <div className="flip-card-front rounded-lg bg-[#e4ccff] p-5 lg:p-10">
-              <img src={`./${card}.png`} alt={`Card ${card}`} />
-            </div>
+          <div className="flip-card-front rounded-lg bg-[#e4ccff] p-5 lg:p-10">
+            <img src="./1.png" alt="Card 1" />
+          </div>
 
-            <div
-              className="flip-card-back w-[100%] h-[100%] bg-cover text-white rounded-lg p-4"
-              style={{ backgroundImage: `url(${SpaceCity1})` }}
-            >
-              <h1 className="text-2xl font-bold/">Earth</h1>
-              <p>Or in the maze of the city</p>
-            </div>
-          </motion.div>
-        </div>
-      ))}
+          <div className="flip-card-back rounded-lg bg-[#e4ccff] p-5 lg:p-10">
+            <img src="./1.png" alt="Card 1" />
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Card 2 */}
+      <div
+        className="flip-card grid-item rounded-md"
+        onPointerOver={() => handleFlipIn(1)}
+        onPointerOut={() => handleFlipOut(1)}
+      >
+        <motion.div
+          className="flip-card-inner w-[100%] h-[100%]"
+          initial={false}
+          animate={{ rotateY: flippedCards[1] ? 180 : 0 }}
+          transition={{ duration: 0.6, animationDirection: "normal" }}
+        >
+          <div className="flip-card-front rounded-lg bg-[#e4ccff] p-5 lg:p-10">
+            <img src="./2.png" alt="Card 2" />
+          </div>
+
+          <div className="flip-card-back rounded-lg bg-[#e4ccff] p-5 lg:p-10">
+            <img src="./2.png" alt="Card 2" />
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Card 3 */}
+      <div
+        className="flip-card grid-item rounded-md"
+        onPointerOver={() => handleFlipIn(2)}
+        onPointerOut={() => handleFlipOut(2)}
+      >
+        <motion.div
+          className="flip-card-inner w-[100%] h-[100%]"
+          initial={false}
+          animate={{ rotateY: flippedCards[2] ? 180 : 0 }}
+          transition={{ duration: 0.6, animationDirection: "normal" }}
+        >
+          <div className="flip-card-front rounded-lg bg-[#e4ccff] p-5 lg:p-10">
+            <img src="./3.png" alt="Card 3" />
+          </div>
+
+          <div className="flip-card-back rounded-lg bg-[#e4ccff] p-5 lg:p-10">
+            <img src="./3.png" alt="Card 2" />
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }
