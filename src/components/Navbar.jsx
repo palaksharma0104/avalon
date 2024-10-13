@@ -20,7 +20,7 @@ function Navbar() {
     <nav
       className={`fixed top-0 left-0 w-full z-10 transition-shadow duration-300 ${
         isScrolled ? "shadow-lg" : ""
-      } bg-white`}
+      } backdrop-blur-xl`}
     >
         <div className="max-w-3xl lg:max-w-7xl mx-auto flex items-center justify-between h-20">
         
@@ -55,7 +55,7 @@ function Navbar() {
 
             {/* Login / SignUp */}
             <div className="flex space-x-4">
-                <button className="px-4 py-2 items-center bg-amber-600 text-white rounded-full hover:bg-amber-400 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out">
+                <button className="px-4 py-2 items-center bg-[#cfb6eb] text-white rounded-full hover:bg-amber-400 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out">
                     Log in
                 </button>
                 <button className="px-4 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out">
