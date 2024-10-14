@@ -21,7 +21,7 @@ function Homepage() {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-8 mx-auto w-full px-10 md:px-20 lg:px-48 mt-40">
+    <div className="grid grid-cols-3 gap-8 mx-auto w-full px-10 md:px-20 lg:px-48 mt-32">
       {/* Card 1 */}
       <div
         className="flip-card grid-item rounded-md cursor-pointer"

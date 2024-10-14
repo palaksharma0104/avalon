@@ -23,7 +23,7 @@ function Navbar() {
       } backdrop-blur-xl`}
     >
       <div
-        className={`max-w-3xl lg:max-w-7xl mx-auto flex transition-all duration-200 items-center justify-between ${
+        className={`max-w-3xl lg:max-w-7xl mx-auto flex px-12 transition-all duration-200 items-center justify-between ${
           isScrolled ? "h-10" : "h-20"
         }`}
       >
@@ -50,7 +50,9 @@ function Navbar() {
 
         {/* Center Section - Links */}
         <div
-          className={`flex space-x-8 ${isScrolled ? "scale-40" : "scale-100"}`}
+          className={`flex space-x-8 transition-all duration-4 ${
+            isScrolled ? "scale-[85%]" : "scale-100"
+          }`}
         >
           <a
             href="#"
