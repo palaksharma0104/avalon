@@ -31,7 +31,7 @@ function App() {
             <Navbar />
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={<Login />}></Route>
+                <Route path="/" element={<Homepage />}></Route>
 
                 <Route path="/flipper" element={<CardFlip />} />
               </Routes>
