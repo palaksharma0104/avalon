@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 
-function Login() {
+function Login({ closeLogin }) {
   function handleCallbackResponse(response) {
-    console.log("Encoded JWT ID toke: " + response.credential);
     var uObj = jwtDecode(response.credential);
     console.log(uObj);
   }
@@ -25,14 +24,15 @@ function Login() {
     <>
       <div
         id="login-popup"
-        tabindex="-1"
-        className="bg-black/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 h-full items-center justify-center flex"
+        tabIndex="-1"
+        className={`bg-black/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 h-full items-center justify-center flex`}
       >
         <div className="relative p-4 w-full max-w-md h-full md:h-auto">
           <div className="relative bg-white rounded-lg shadow">
             <button
               type="button"
-              className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center popup-close"
+              className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+              onClick={closeLogin} // Call the closeLogin function when clicked
             >
               <svg
                 aria-hidden="true"
@@ -42,9 +42,9 @@ function Login() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  cliprule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               </svg>
               <span className="sr-only">Close popup</span>
@@ -61,15 +61,6 @@ function Login() {
               </div>
 
               <div className="mt-7 flex flex-col gap-2 content-center">
-                {/* <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
-                  <img
-                    src="https://www.svgrepo.com/show/475656/google-color.svg"
-                    alt="Google"
-                    className="h-[18px] w-[18px] "
-                  />
-                  Continue with Google
-                </button> */}
-
                 <div id="signInDiv" className="mx-auto mt-5"></div>
               </div>
 
@@ -80,29 +71,27 @@ function Login() {
               </div>
 
               <form className="w-full">
-                <label for="email" className="sr-only">
+                <label htmlFor="email" className="sr-only">
                   Email address
                 </label>
                 <input
                   name="email"
                   type="email"
-                  autocomplete="email"
+                  autoComplete="email"
                   required=""
                   className="block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
                   placeholder="Email Address"
-                  value=""
                 />
-                <label for="password" className="sr-only">
+                <label htmlFor="password" className="sr-only">
                   Password
                 </label>
                 <input
                   name="password"
                   type="password"
-                  autocomplete="current-password"
+                  autoComplete="current-password"
                   required=""
                   className="mt-2 block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
                   placeholder="Password"
-                  value=""
                 />
                 <p className="mb-3 mt-2 text-sm text-gray-500">
                   <a
@@ -120,11 +109,13 @@ function Login() {
                 </button>
               </form>
 
-              <div className="mt-6 text-center text-sm text-slate-600">
-                Don't have an account?
-                <a href="/signup" className="font-medium text-[#4285f4]">
-                  Sign up
-                </a>
+              <div className="mt-6 text-center">
+                <p className="mt-3 text-sm">
+                  Don’t have an account?{" "}
+                  <a href="#" className="text-blue-800 hover:text-blue-600">
+                    Sign up
+                  </a>
+                </p>
               </div>
             </div>
           </div>

@@ -22,6 +22,11 @@ function Navbar() {
     setShowLogin(true);
   };
 
+  // This function will close the login popup
+  const handleCloseLogin = () => {
+    setShowLogin(false);
+  };
+
   return (
     <>
       <nav
@@ -34,18 +39,11 @@ function Navbar() {
             isScrolled ? "h-10" : "h-20"
           }`}
         >
-          {/* Left Section - Logo */}
           <div
             className={`flex items-center transition-all duration-4 ${
               isScrolled ? "scale-[60%]" : "scale-100"
             }`}
           >
-            {/* <img
-                    className="h-8 w-8"
-                    src="https://cdn-icons-png.flaticon.com/512/2111/2111425.png"
-                    alt="Logo"
-                /> */}
-
             <div className="title ml-5 hover:scale-110 transition-scale duration-200 ease-in-out">
               <span className="highlight">
                 <span className="text text-xl mx-2 mb-1 font-semibold text-amber-600 hover:text-amber-700 cursor-pointer">
@@ -55,7 +53,6 @@ function Navbar() {
             </div>
           </div>
 
-          {/* Center Section - Links */}
           <div
             className={`flex space-x-8 transition-all duration-4 ${
               isScrolled ? "scale-[85%]" : "scale-100"
@@ -81,7 +78,6 @@ function Navbar() {
             </a>
           </div>
 
-          {/* Login / SignUp */}
           <div
             className={`flex space-x-4 transition-all duration-4 ${
               isScrolled ? "scale-[70%]" : "scale-100"
@@ -99,7 +95,7 @@ function Navbar() {
           </div>
         </div>
       </nav>
-      <div>{showLogin && <Login />}</div>
+      <div>{showLogin && <Login closeLogin={handleCloseLogin} />}</div>
     </>
   );
 }
