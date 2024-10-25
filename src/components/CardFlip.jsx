@@ -19,7 +19,8 @@ const CardFlip = () => {
     <div className="flex items-center justify-center  h-[800px] cursor-pointer">
       <div
         className="flip-card w-[300px] h-[600px] rounded-md"
-        onPointerOver={handleFlipIn} onPointerOut={handleFlipOut}
+        onPointerOver={handleFlipIn}
+        onPointerOut={handleFlipOut}
       >
         <motion.div
           className="flip-card-inner w-[100%] h-[100%]"

@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import { div } from "framer-motion/client";
 
-function Login({ closeLogin }) {
+function Signup({ closeSignup }) {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [err, setErr] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // http://localhost:5000/api/auth/signup
-
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signin", {
+      const res = await axios.post("http://localhost:5000/api/auth/signup", {
         email,
+        name,
+        username,
         password,
       });
-
       console.log(res);
     } catch (err) {
       setErr(err.response.data.message);
@@ -37,7 +42,7 @@ function Login({ closeLogin }) {
       callback: handleCallbackResponse,
     });
 
-    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+    google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
       theme: "outline",
       size: "large",
     });
@@ -46,7 +51,7 @@ function Login({ closeLogin }) {
   return (
     <>
       <div
-        id="login-popup"
+        id="signup-popup"
         tabIndex="-1"
         className={`bg-black/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 h-full items-center justify-center flex`}
       >
@@ -55,7 +60,7 @@ function Login({ closeLogin }) {
             <button
               type="button"
               className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
-              onClick={closeLogin} // Call the closeLogin function when clicked
+              onClick={closeSignup} // Call the closeSignup function when clicked
             >
               <svg
                 aria-hidden="true"
@@ -74,17 +79,14 @@ function Login({ closeLogin }) {
             </button>
 
             <div className="p-5">
-              <h3 className="text-2xl mb-0.5 font-medium"></h3>
-              <p className="mb-4 text-sm font-normal text-gray-800"></p>
-
               <div className="text-center">
                 <p className="mb-3 text-2xl font-semibold leading-5 text-slate-900">
-                  Login to your account
+                  Create your account
                 </p>
               </div>
 
               <div className="mt-7 flex flex-col gap-2 content-center">
-                <div id="signInDiv" className="mx-auto mt-5"></div>
+                <div id="signUpDiv" className="mx-auto mt-5"></div>
               </div>
 
               <div className="flex w-full items-center gap-2 py-6 text-sm text-slate-600">
@@ -94,6 +96,38 @@ function Login({ closeLogin }) {
               </div>
 
               <form className="w-full">
+                <label htmlFor="name" className="sr-only">
+                  Full Name
+                </label>
+                <input
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required=""
+                  className="block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
+                  placeholder="Full Name"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+
+                <label htmlFor="username" className="sr-only">
+                  Username
+                </label>
+                <input
+                  name="username"
+                  type="text"
+                  autoComplete="username"
+                  required=""
+                  className="my-2 block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
+                />
+
                 <label htmlFor="email" className="sr-only">
                   Email address
                 </label>
@@ -102,7 +136,7 @@ function Login({ closeLogin }) {
                   type="email"
                   autoComplete="email"
                   required=""
-                  className="block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
+                  className="mt-2 block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
                   placeholder="Email Address"
                   value={email}
                   onChange={(e) => {
@@ -115,7 +149,7 @@ function Login({ closeLogin }) {
                 <input
                   name="password"
                   type="password"
-                  autoComplete="current-password"
+                  autoComplete="new-password"
                   required=""
                   className="mt-2 block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
                   placeholder="Password"
@@ -124,14 +158,21 @@ function Login({ closeLogin }) {
                     setPassword(e.target.value);
                   }}
                 />
-                <p className="mb-3 mt-2 text-xs text-gray-500">
-                  <a
-                    href="/forgot-password"
-                    className="text-blue-800 hover:text-blue-600"
-                  >
-                    Reset your password?
-                  </a>
-                </p>
+                <label htmlFor="confirm-password" className="sr-only">
+                  Confirm Password
+                </label>
+                <input
+                  name="confirm-password"
+                  type="password"
+                  autoComplete="new-password"
+                  required=""
+                  className="my-2 block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                  }}
+                />
                 {err && (
                   <div className="mb-4 text-red-600 text-sm text-center">
                     {err}
@@ -142,15 +183,15 @@ function Login({ closeLogin }) {
                   className="inline-flex w-full items-center justify-center rounded-lg bg-black p-2 py-3 text-sm font-medium text-white outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 disabled:bg-gray-400"
                   onClick={handleSubmit}
                 >
-                  Continue
+                  Sign Up
                 </button>
               </form>
 
               <div className="mt-6 text-center">
                 <p className="mt-3 text-sm">
-                  Don't have an account?{" "}
+                  Already have an account?{" "}
                   <a href="#" className="text-blue-800 hover:text-blue-600">
-                    Sign up
+                    Log in
                   </a>
                 </p>
               </div>
@@ -162,4 +203,4 @@ function Login({ closeLogin }) {
   );
 }
 
-export default Login;
+export default Signup;

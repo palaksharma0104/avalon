@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import Login from "./Login";
+import Signup from "./Signup";
 import "./styles.css";
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +27,10 @@ function Navbar() {
   // This function will close the login popup
   const handleCloseLogin = () => {
     setShowLogin(false);
+  };
+
+  const handleCloseSignup = () => {
+    setShowSignup(false);
   };
 
   return (
@@ -89,13 +95,19 @@ function Navbar() {
             >
               Log in
             </button>
-            <button className="px-4 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out">
+            <button
+              onClick={() => {
+                setShowSignup(true);
+              }}
+              className="px-4 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out"
+            >
               Sign up
             </button>
           </div>
         </div>
       </nav>
       <div>{showLogin && <Login closeLogin={handleCloseLogin} />}</div>
+      <div>{showSignup && <Signup closeSignup={handleCloseSignup} />}</div>
     </>
   );
 }
