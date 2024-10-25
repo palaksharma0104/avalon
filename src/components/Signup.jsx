@@ -30,9 +30,25 @@ function Signup({ closeSignup }) {
     }
   };
 
-  function handleCallbackResponse(response) {
+  const gSubmit = async (em, na, us, pa) => {
+    try {
+      const res = await axios.post("http://localhost:5000/api/auth/o-auth", {
+        email: em,
+        name: na,
+        username: us,
+        password: pa,
+      });
+      console.log(res);
+    } catch (err) {
+      //   setErr(err.response.data.message);
+      console.log(err.response.data.message);
+    }
+  };
+
+  async function handleCallbackResponse(response) {
     var uObj = jwtDecode(response.credential);
     console.log(uObj);
+    await gSubmit(uObj.email, uObj.name, uObj.email, uObj.sub);
   }
 
   useEffect(() => {
