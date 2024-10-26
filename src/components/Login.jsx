@@ -10,6 +10,7 @@ function Login({ closeLogin }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErr("");
     // http://localhost:5000/api/auth/signup
 
     try {
@@ -25,9 +26,11 @@ function Login({ closeLogin }) {
     }
   };
 
-  const gSubmit = async (em, pass) => {
+  const gSubmit = async (na, em, pass) => {
     try {
       const res = await axios.post("http://localhost:5000/api/auth/o-auth", {
+        name: na,
+        username: em,
         email: em,
         password: pass,
       });
@@ -42,7 +45,7 @@ function Login({ closeLogin }) {
   async function handleCallbackResponse(response) {
     var uObj = jwtDecode(response.credential);
     console.log(uObj);
-    await gSubmit(uObj.email, uObj.sub);
+    await gSubmit(uObj.name, uObj.email, uObj.sub);
   }
 
   useEffect(() => {

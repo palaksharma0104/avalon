@@ -12,6 +12,7 @@ function Signup({ closeSignup }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErr("");
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
@@ -40,7 +41,7 @@ function Signup({ closeSignup }) {
       });
       console.log(res);
     } catch (err) {
-      //   setErr(err.response.data.message);
+      setErr(err.response.data.message);
       console.log(err.response.data.message);
     }
   };
