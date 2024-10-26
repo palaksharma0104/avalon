@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import { div } from "framer-motion/client";
 
 function Login({ closeLogin }) {
   const [email, setEmail] = useState("");
@@ -11,7 +10,6 @@ function Login({ closeLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErr("");
-    // http://localhost:5000/api/auth/signup
 
     try {
       const res = await axios.post("http://localhost:5000/api/auth/signin", {
@@ -19,7 +17,7 @@ function Login({ closeLogin }) {
         password,
       });
 
-      console.log(res);
+      setToken(res);
     } catch (err) {
       setErr(err.response.data.message);
       console.log(err.response.data.message);
@@ -36,9 +34,21 @@ function Login({ closeLogin }) {
       });
 
       console.log(res);
+      setToken(res);
+      window.location.reload();
     } catch (err) {
       setErr(err.response.data.message);
       console.log(err.response.data.message);
+    }
+  };
+
+  // Set token
+  const setToken = (res) => {
+    try {
+      const token = res.data.token;
+      localStorage.setItem("token", token);
+    } catch (e) {
+      console.log(e);
     }
   };
 

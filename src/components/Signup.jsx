@@ -24,7 +24,8 @@ function Signup({ closeSignup }) {
         username,
         password,
       });
-      console.log(res);
+      setToken(res);
+      window.location.reload();
     } catch (err) {
       setErr(err.response.data.message);
       console.log(err.response.data.message);
@@ -39,10 +40,21 @@ function Signup({ closeSignup }) {
         username: us,
         password: pa,
       });
-      console.log(res);
+      setToken(res);
+      window.location.reload();
     } catch (err) {
       setErr(err.response.data.message);
       console.log(err.response.data.message);
+    }
+  };
+
+  // Set token
+  const setToken = (res) => {
+    try {
+      const token = res.data.token;
+      localStorage.setItem("token", token);
+    } catch (e) {
+      console.log(e);
     }
   };
 

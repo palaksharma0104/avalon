@@ -2,11 +2,14 @@ import { useState, useEffect } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
 import "./styles.css";
+import { jwtDecode } from "jwt-decode";
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState({ name: "", username: "" });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +22,23 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      setLoggedIn(true);
+      const user = jwtDecode(token);
+      setUser(user.user);
+      console.log(user.user.name);
+    }
+  }, []);
+
+  // Logout
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
 
   const handleLoginClick = () => {
     setShowLogin(true);
@@ -83,27 +103,30 @@ function Navbar() {
               About
             </a>
           </div>
-
-          <div
-            className={`flex space-x-4 transition-all duration-4 ${
-              isScrolled ? "scale-[70%]" : "scale-100"
-            }`}
-          >
-            <button
-              onClick={handleLoginClick}
-              className="px-4 py-2 items-center bg-[#cfb6eb] text-white rounded-full hover:bg-amber-400 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out"
+          {loggedIn ? (
+            <button onClick={logout}>{user.username}</button>
+          ) : (
+            <div
+              className={`flex space-x-4 transition-all duration-4 ${
+                isScrolled ? "scale-[70%]" : "scale-100"
+              }`}
             >
-              Log in
-            </button>
-            <button
-              onClick={() => {
-                setShowSignup(true);
-              }}
-              className="px-4 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out"
-            >
-              Sign up
-            </button>
-          </div>
+              <button
+                onClick={handleLoginClick}
+                className="px-4 py-2 items-center bg-[#cfb6eb] text-white rounded-full hover:bg-amber-400 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out"
+              >
+                Log in
+              </button>
+              <button
+                onClick={() => {
+                  setShowSignup(true);
+                }}
+                className="px-4 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out"
+              >
+                Sign up
+              </button>
+            </div>
+          )}
         </div>
       </nav>
       <div>{showLogin && <Login closeLogin={handleCloseLogin} />}</div>
