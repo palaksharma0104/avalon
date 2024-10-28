@@ -18,6 +18,7 @@ function Login({ closeLogin }) {
       });
 
       setToken(res);
+      window.location.reload();
     } catch (err) {
       setErr(err.response.data.message);
       console.log(err.response.data.message);
