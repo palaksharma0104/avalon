@@ -2,7 +2,6 @@ import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
 import MobileHome from "./pages/MobileHome";
 import CardFlip from "./components/CardFlip";
-import Login from "./components/Login";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -28,7 +27,10 @@ function App() {
       ) : (
         <>
           <body className="h-[200em]">
+            <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+
             <Navbar />
+
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Homepage />}></Route>
