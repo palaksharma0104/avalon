@@ -30,9 +30,8 @@ function App() {
           <body className="h-[200em]">
             <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 
-            <Navbar />
-
             <BrowserRouter>
+              <Navbar />
               <Routes>
                 <Route path="/" element={<Homepage />}></Route>
 

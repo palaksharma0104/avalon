@@ -3,6 +3,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import "./styles.css";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,6 +11,7 @@ function Navbar() {
   const [showSignup, setShowSignup] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({ name: "", username: "" });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +39,8 @@ function Navbar() {
   // Logout
   const logout = () => {
     localStorage.removeItem("token");
+
+    navigate("/");
     window.location.reload();
   };
 
@@ -70,7 +74,12 @@ function Navbar() {
               isScrolled ? "scale-[60%]" : "scale-100"
             }`}
           >
-            <div className="title ml-5 hover:scale-110 transition-scale duration-200 ease-in-out">
+            <div
+              className="title ml-5 hover:scale-110 transition-scale duration-200 ease-in-out"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
               <span className="highlight">
                 <span className="text text-xl mx-2 mb-1 font-semibold text-amber-600 hover:text-amber-700 cursor-pointer">
                   Avalon
@@ -135,6 +144,14 @@ function Navbar() {
                         className="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block"
                       >
                         Hello, {user.name}
+                      </a>
+                    </li>
+                    <li className="border-b py-3">
+                      <a
+                        href="profile"
+                        className="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block"
+                      >
+                        Profile
                       </a>
                     </li>
                     <li className="border-b py-3">
