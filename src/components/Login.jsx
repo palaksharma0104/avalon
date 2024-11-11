@@ -20,8 +20,14 @@ function Login({ closeLogin }) {
       setToken(res);
       window.location.reload();
     } catch (err) {
-      setErr(err.response.data.message);
-      console.log(err.response.data.message);
+      if (!err.response) {
+        setErr("Server can't be reached at the moment.");
+      } else {
+        setErr(
+          err.response.data.message ||
+            "An error occurred while processing your request."
+        );
+      }
     }
   };
 
@@ -38,8 +44,14 @@ function Login({ closeLogin }) {
       setToken(res);
       window.location.reload();
     } catch (err) {
-      setErr(err.response.data.message);
-      console.log(err.response.data.message);
+      if (!err.response) {
+        setErr("Server can't be reached at the moment.");
+      } else {
+        setErr(
+          err.response.data.message ||
+            "An error occurred while processing your request."
+        );
+      }
     }
   };
 

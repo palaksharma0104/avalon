@@ -4,6 +4,7 @@ import MobileHome from "./pages/MobileHome";
 import CardFlip from "./components/CardFlip";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/" element={<Homepage />}></Route>
 
                 <Route path="/flipper" element={<CardFlip />} />
+                <Route path="/profile" element={<ProfilePage />} />
               </Routes>
             </BrowserRouter>
           </body>
