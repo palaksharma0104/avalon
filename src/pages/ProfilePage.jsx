@@ -84,26 +84,31 @@ const ProfilePage = () => {
             onClick={() => setShowEditUsername(!showEditUsername)}
             className="ml-4 text-blue-500 underline"
           >
-            Edit Username
+            Edit
           </button>
         </p>
 
         {showEditUsername && (
-          <form onSubmit={handleUsernameChange}>
-            <label className="block mb-2 text-sm">New Username:</label>
+          <form
+            onSubmit={handleUsernameChange}
+            className="w-40 flex flex-col mx-auto"
+          >
             <input
               type="text"
               value={newUsername}
               onChange={(e) => setNewUsername(e.target.value)}
-              className="border px-4 py-2 w-full mb-4 rounded-md"
+              className="border px-2 py-1 w-full mb-2 rounded-md"
               placeholder="Enter new username"
             />
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+
+            {error && (
+              <p className="text-red-500 text-sm text-center mb-1">{error}</p>
+            )}
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md"
+              className="bg-blue-500 text-white px-2 py-1 mx-auto rounded-md"
             >
-              Update Username
+              Update
             </button>
           </form>
         )}
