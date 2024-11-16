@@ -5,6 +5,7 @@ import CardFlip from "./components/CardFlip";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProfilePage from "./pages/ProfilePage";
+import LoggedInPage from "./pages/Lhome";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -27,13 +28,12 @@ function App() {
         <MobileHome />
       ) : (
         <>
-          <body className="h-[200em]">
-            <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-
+          <body>
             <BrowserRouter>
               <Navbar />
               <Routes>
                 <Route path="/" element={<Homepage />}></Route>
+                <Route path="/l" element={<LoggedInPage />}></Route>
 
                 <Route path="/flipper" element={<CardFlip />} />
                 <Route path="/profile" element={<ProfilePage />} />

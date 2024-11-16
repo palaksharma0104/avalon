@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
+import Login from "./Login";
 
 function Signup({ closeSignup }) {
   const [email, setEmail] = useState("");
@@ -9,6 +10,16 @@ function Signup({ closeSignup }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [err, setErr] = useState("");
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleLoginClick = () => {
+    setShowLogin(true);
+  };
+
+  // This function will close the login popup
+  const handleCloseLogin = () => {
+    setShowLogin(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -231,7 +242,11 @@ function Signup({ closeSignup }) {
               <div className="mt-6 text-center">
                 <p className="mt-3 text-sm">
                   Already have an account?{" "}
-                  <a href="#" className="text-blue-800 hover:text-blue-600">
+                  <a
+                    href="#"
+                    className="text-blue-800 hover:text-blue-600"
+                    onClick={handleLoginClick}
+                  >
                     Log in
                   </a>
                 </p>
@@ -240,6 +255,7 @@ function Signup({ closeSignup }) {
           </div>
         </div>
       </div>
+      <div>{showLogin && <Login closeLogin={handleCloseLogin} />}</div>
     </>
   );
 }
