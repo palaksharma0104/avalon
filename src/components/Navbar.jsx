@@ -32,7 +32,7 @@ function Navbar() {
       setLoggedIn(true);
       const user = jwtDecode(token);
       setUser(user.user);
-      console.log(user.user.name);
+      // console.log(user.user.name);
     }
   }, []);
 
@@ -100,10 +100,10 @@ function Navbar() {
               Today
             </a>
             <a
-              href="#"
+              href="/create"
               className="text-gray-900 hover:text-gray-600 hover:font-bold transition-all duration-200 ease-in-out"
             >
-              Explore
+              Create a Post
             </a>
             <a
               href="#"
@@ -118,10 +118,7 @@ function Navbar() {
               <ul>
                 {/* the dropdown thingy */}
                 <li className="group relative">
-                  <a
-                    href="javascript:void(0)"
-                    className="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block"
-                  >
+                  <a className="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block">
                     {user.username}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -139,10 +136,7 @@ function Navbar() {
                   </a>
                   <ul className="absolute top-5 right-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500">
                     <li className="border-b py-3">
-                      <a
-                        href="javascript:void(0)"
-                        className="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block"
-                      >
+                      <a className="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block">
                         Hello, {user.name}
                       </a>
                     </li>
@@ -154,22 +148,21 @@ function Navbar() {
                         Profile
                       </a>
                     </li>
-                    <li className="border-b py-3">
+                    <li className="border-b py-3 cursor-pointer">
                       <a
-                        href="javascript:void(0)"
                         className="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block"
                         onClick={logout}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          xmlnsXlink="http://www.w3.org/1999/xlink"
                           fill="#000000"
                           height="18px"
                           width="18px"
                           version="1.1"
                           id="Capa_1"
                           viewBox="0 0 384.971 384.971"
-                          xml:space="preserve"
+                          xmlSpace="preserve"
                           className="mr-4 inline-block"
                         >
                           <g>
