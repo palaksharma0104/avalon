@@ -1,14 +1,11 @@
 import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
-import MobileHome from "./pages/MobileHome";
 import CardFlip from "./components/CardFlip";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProfilePage from "./pages/ProfilePage";
-import LoggedInPage from "./pages/Lhome";
 import BlogsPage from "./pages/BlogSpace";
 import CreateBlogPage from "./pages/Create";
-import { LampContainer } from "./components/ui/Lamp";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -47,8 +44,6 @@ function App() {
               <Route path="/create" element={<CreateBlogPage />}></Route>
             </>
           )}
-
-          <Route path="/l" element={<LoggedInPage />}></Route>
 
           <Route path="/flipper" element={<CardFlip />} />
           <Route path="/profile" element={<ProfilePage />} />

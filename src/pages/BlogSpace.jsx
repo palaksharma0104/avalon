@@ -24,13 +24,13 @@ const BlogsPage = () => {
   if (loading) return <div>Loading blogs...</div>;
 
   return (
-    <div className="p-6 mt-16 mx-20 flex flex-col">
-      <h1 className="text-2xl font-bold mb-4 mx-auto">Blogs</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="p-6 mt-28 px-52 flex flex-col ">
+      <h1 className="text-2xl font-bold mb-10 mx-auto text-rose-200">Blogs</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs.map((blog) => (
           <div
             key={blog._id}
-            className="bg-white p-4 shadow rounded-lg hover:shadow-lg transition"
+            className="bg-rose-100 p-4 shadow rounded-sm hover:shadow-lg transition"
           >
             <h2 className="text-xl font-semibold mb-2">{blog.title}</h2>
             <p className="text-gray-700 mb-4">

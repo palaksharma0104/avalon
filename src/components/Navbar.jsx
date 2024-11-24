@@ -95,30 +95,29 @@ function Navbar() {
           >
             <a
               href="#"
-              className="text-gray-900 hover:text-gray-600 hover:font-bold transition-all duration-200 ease-in-out"
+              className="text-rose-300 hover:text-rose-400 hover:font-bold transition-all duration-200 ease-in-out"
             >
               Today
             </a>
             <a
               href="/create"
-              className="text-gray-900 hover:text-gray-600 hover:font-bold transition-all duration-200 ease-in-out"
+              className="text-rose-300 hover:text-rose-400 hover:font-bold transition-all duration-200 ease-in-out"
             >
               Create a Post
             </a>
             <a
               href="#"
-              className="text-gray-900 hover:text-gray-600 hover:font-bold transition-all duration-200 ease-in-out"
+              className="text-rose-300 hover:text-rose-400 hover:font-bold transition-all duration-200 ease-in-out"
             >
               About
             </a>
           </div>
           {loggedIn ? (
             <>
-              {/* <button onClick={logout}>{user.username}</button> */}
               <ul>
                 {/* the dropdown thingy */}
                 <li className="group relative">
-                  <a className="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block">
+                  <a className="hover:text-rose-800 hover:fill-rose-800 cursor-pointer text-rose-300 fill-rose-300 font-semibold text-[15px] block">
                     {user.username}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -134,23 +133,23 @@ function Navbar() {
                       />
                     </svg>
                   </a>
-                  <ul className="absolute top-5 right-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500">
-                    <li className="border-b py-3">
-                      <a className="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block">
+                  <ul className="absolute top-8 right-0 z-50 block space-y-2 shadow-lg bg-rose-100 max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500">
+                    <li className="border-b ">
+                      <a className="  text-gray-600 font-semibold text-[15px] block">
                         Hello, {user.name}
                       </a>
                     </li>
                     <li className="border-b py-3">
                       <a
                         href="profile"
-                        className="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block"
+                        className="hover:text-rose-400 hover:fill-rose-400 text-gray-600 font-semibold text-[15px] block"
                       >
                         Profile
                       </a>
                     </li>
                     <li className="border-b py-3 cursor-pointer">
                       <a
-                        className="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block"
+                        className="hover:text-rose-950 hover:fill-rose-950 text-gray-600 font-semibold text-[15px] block"
                         onClick={logout}
                       >
                         <svg
