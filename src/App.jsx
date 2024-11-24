@@ -9,7 +9,6 @@ import LoggedInPage from "./pages/Lhome";
 import BlogsPage from "./pages/BlogSpace";
 import CreateBlogPage from "./pages/Create";
 import { LampContainer } from "./components/ui/Lamp";
-import { Lamper } from "./components/Lamper";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -50,7 +49,6 @@ function App() {
           )}
 
           <Route path="/l" element={<LoggedInPage />}></Route>
-          <Route path="/lamp" element={<Lamper />}></Route>
 
           <Route path="/flipper" element={<CardFlip />} />
           <Route path="/profile" element={<ProfilePage />} />
