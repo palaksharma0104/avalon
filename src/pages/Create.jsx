@@ -16,7 +16,7 @@ const CreateBlogPage = () => {
     try {
       const token = localStorage.getItem("token");
       const user = jwtDecode(token);
-      const uString = `${user.user.name}(${user.user.username})`;
+      const uString = user.user.id;
       console.log(uString);
 
       const response = await axios.post(

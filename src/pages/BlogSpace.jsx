@@ -36,7 +36,7 @@ const BlogsPage = () => {
               {blog.content.substring(0, 100)}...
             </p>
             <p className="text-sm text-gray-500">
-              By: {blog.author} |{" "}
+              By: {`${blog.author.name}(${blog.author.username})`} |{" "}
               {new Date(blog.createdAt).toLocaleDateString()}
             </p>
             <a

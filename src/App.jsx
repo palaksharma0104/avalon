@@ -8,7 +8,6 @@ import ProfilePage from "./pages/ProfilePage";
 import LoggedInPage from "./pages/Lhome";
 import BlogsPage from "./pages/BlogSpace";
 import CreateBlogPage from "./pages/Create";
-import { Hm } from "./components/Hm";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -44,7 +43,7 @@ function App() {
             <Navbar />
             <Routes>
               {!loggedIn ? (
-                <Route path="/" element={<Hm />}></Route>
+                <Route path="/" element={<Homepage />}></Route>
               ) : (
                 <>
                   <Route path="/" element={<BlogsPage />}></Route>
