@@ -8,6 +8,8 @@ import ProfilePage from "./pages/ProfilePage";
 import LoggedInPage from "./pages/Lhome";
 import BlogsPage from "./pages/BlogSpace";
 import CreateBlogPage from "./pages/Create";
+import { LampContainer } from "./components/ui/Lamp";
+import { Lamper } from "./components/Lamper";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -35,30 +37,25 @@ function App() {
 
   return (
     <>
-      {isMobile ? (
-        <MobileHome />
-      ) : (
-        <>
-          <BrowserRouter>
-            <Navbar />
-            <Routes>
-              {!loggedIn ? (
-                <Route path="/" element={<Homepage />}></Route>
-              ) : (
-                <>
-                  <Route path="/" element={<BlogsPage />}></Route>
-                  <Route path="/create" element={<CreateBlogPage />}></Route>
-                </>
-              )}
+      <BrowserRouter>
+        {loggedIn && <Navbar />}
+        <Routes>
+          {!loggedIn ? (
+            <Route path="/" element={<Homepage />}></Route>
+          ) : (
+            <>
+              <Route path="/" element={<BlogsPage />}></Route>
+              <Route path="/create" element={<CreateBlogPage />}></Route>
+            </>
+          )}
 
-              <Route path="/l" element={<LoggedInPage />}></Route>
+          <Route path="/l" element={<LoggedInPage />}></Route>
+          <Route path="/lamp" element={<Lamper />}></Route>
 
-              <Route path="/flipper" element={<CardFlip />} />
-              <Route path="/profile" element={<ProfilePage />} />
-            </Routes>
-          </BrowserRouter>
-        </>
-      )}
+          <Route path="/flipper" element={<CardFlip />} />
+          <Route path="/profile" element={<ProfilePage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
