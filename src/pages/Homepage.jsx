@@ -96,7 +96,7 @@ function Homepage() {
 
   return (
     <>
-      <div className="bg-slate-950 pb-20">
+      <div className="bg-slate-950 pb-32">
         <LampContainer>
           <motion.h1
             initial={{ opacity: 0.5, y: 100 }}
@@ -108,7 +108,7 @@ function Homepage() {
             }}
             className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
           >
-            Welcome to <span className="text-[#c06ce1]">Avalon</span>
+            Welcome to <span className="text-rose-500">Avalon</span>
             <br />
             <span className="text-sm tracking-normal mx-20 mt-1">
               A cozy corner of the internet where stories meet creativity. Share
@@ -116,21 +116,13 @@ function Homepage() {
               unique journey.
             </span>
           </motion.h1>
-
-          {/* <Footer /> */}
         </LampContainer>
         <div>{showSignup && <Signup closeSignup={handleCloseSignup} />}</div>
 
-        <div className="relative bg-slate-400 w-1/3 mx-auto rounded-sm px-10 py-5 -mt-48 ">
+        <div className="relative bg-rose-500 backdrop-blur-lg bg-opacity-20  w-1/3 mx-auto rounded-sm px-10 py-5 -mt-56 ">
           <div className="p-5">
             <h3 className="text-2xl mb-0.5 font-medium"></h3>
             <p className="mb-4 text-sm font-normal text-gray-800"></p>
-
-            <div className="text-center">
-              <p className="mb-10 text-2xl font-semibold leading-5 text-slate-900">
-                Login
-              </p>
-            </div>
 
             <form className="w-full flex flex-col">
               <label htmlFor="email" className="sr-only">
@@ -141,7 +133,7 @@ function Homepage() {
                 type="email"
                 autoComplete="email"
                 required=""
-                className="block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
+                className="block w-full rounded-sm border bg-opacity-20 bg-slate-500  focus:bg-rose-300 transition duration-2 ease-in-out border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-200 focus:ring-2 focus:ring-black focus:ring-offset-1"
                 placeholder="Email Address"
                 value={email}
                 onChange={(e) => {
@@ -156,7 +148,7 @@ function Homepage() {
                 type="password"
                 autoComplete="current-password"
                 required=""
-                className="mt-2 block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
+                className="mt-2 block w-full rounded-sm border bg-opacity-20 bg-slate-500  focus:bg-rose-300 transition duration-2 ease-in-out border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-200 focus:ring-2 focus:ring-black focus:ring-offset-1"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => {
@@ -165,35 +157,35 @@ function Homepage() {
               />
 
               {err && (
-                <div className="mb-4 text-red-600 text-sm text-center">
+                <div className="mt-4 text-red-600 text-sm text-center">
                   {err}
                 </div>
               )}
               <button
                 type="submit"
-                className="mt-5 inline-flex w-3/4 mx-auto items-center justify-center rounded-lg bg-black p-2 py-3 text-sm font-medium text-white outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 disabled:bg-gray-400"
+                className="mt-5 inline-flex w-3/4 mx-auto items-center hover:bg-rose-700 transition justify-center rounded-sm bg-rose-950 p-2 py-3 text-sm font-medium text-white outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 disabled:bg-gray-400"
                 onClick={handleSubmit}
               >
-                Continue
+                Log in
               </button>
             </form>
-            <div className="flex w-full items-center gap-2 py-6 text-sm text-slate-600">
-              <div className="h-px w-full bg-slate-200"></div>
+            <div className="flex w-full items-center gap-2 py-6 text-sm text-rose-200">
+              <div className="h-px w-full bg-rose-200"></div>
               OR
-              <div className="h-px w-full bg-slate-200"></div>
+              <div className="h-px w-full bg-rose-200"></div>
             </div>
-            <div className="mt- flex flex-col gap-2 content-center">
-              <div id="signInDiv" className="mx-auto mt-5"></div>
+            <div className=" flex flex-col gap-2 content-center">
+              <div id="signInDiv" className="mx-auto bg-slate-500"></div>
             </div>
 
             <div className="mt-6 text-center">
-              <p className="mt-3 text-sm">
+              <p className="mt-3 text-sm text-rose-200">
                 Don't have an account?{" "}
                 <a
                   onClick={() => {
                     setShowSignup(true);
                   }}
-                  className="text-blue-800 hover:text-blue-600 cursor-pointer"
+                  className="text-rose-800 hover:text-rose-600 cursor-pointer"
                 >
                   Sign up
                 </a>
@@ -202,6 +194,7 @@ function Homepage() {
           </div>
         </div>
       </div>
+      <Footer classe="bg-slate-900" />
     </>
   );
 
