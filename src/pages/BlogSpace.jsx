@@ -4,6 +4,7 @@ import axios from "axios";
 const BlogsPage = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [expandedBlogId, setExpandedBlogId] = useState(null); // To track which blog is expanded
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -33,18 +34,22 @@ const BlogsPage = () => {
           >
             <h2 className="text-xl font-semibold mb-2">{blog.title}</h2>
             <p className="text-gray-700 mb-4">
-              {blog.content.substring(0, 100)}...
+              {expandedBlogId === blog._id
+                ? blog.content // Show full content if expanded
+                : `${blog.content.substring(0, 100)}...`}
             </p>
             <p className="text-sm text-gray-500">
-              By: {`${blog.author.name}(${blog.author.username})`} |{" "}
+              By: {`${blog.author.name} (${blog.author.username})`} |{" "}
               {new Date(blog.createdAt).toLocaleDateString()}
             </p>
-            <a
-              href={`/blogs/${blog._id}`}
+            <button
+              onClick={() =>
+                setExpandedBlogId(expandedBlogId === blog._id ? null : blog._id)
+              }
               className="text-blue-500 hover:underline text-sm"
             >
-              Read More
-            </a>
+              {expandedBlogId === blog._id ? "Show Less" : "Read More"}
+            </button>
           </div>
         ))}
       </div>
