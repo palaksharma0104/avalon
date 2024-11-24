@@ -11,27 +11,61 @@ import {
 // ! later in env
 const JWT_SECRET = "sentience as it is";
 
+// function to check if an email exists in gUser collection
+const gUserCheck = async (email) => {
+  const GUser = await gUser.findOne({ email });
+  if (GUser) {
+    return true;
+  }
+  return false;
+};
+
+// function to check whether an email exists in user collection
+const userCheck = async (email) => {
+  console.log("here");
+  const user = await User.findOne({ email });
+  if (user) {
+    return true;
+  }
+  return false;
+};
+
+// function to check if username already exists
+const usernameCheck = async (username) => {
+  const gcheck = await gUser.findOne({ username });
+  if (gcheck) {
+    return true;
+  }
+  const user = await User.findOne({ username });
+  if (user) {
+    return true;
+  }
+  return false;
+};
+
 router.post("/profile", getUserProfile); // Fetch user profile data
 router.post("/updateUsername", updateUsername); // Update the username
 
 // Sign Up
 router.post("/signup", async (req, res) => {
   const { email, name, username, password } = req.body;
-  console.log(email);
 
   try {
     // check if already a google user
-    let GUser = await gUser.findOne({ email });
-    if (GUser) {
+    if (await gUserCheck(email)) {
       return res
         .status(400)
         .json({ message: "Email is linked to Sign-in with google." });
     }
 
     // check if already a normal user
-    let user = await User.findOne({ email });
-    if (user) {
+    if (await userCheck(email)) {
       return res.status(400).json({ message: "User already exists" });
+    }
+
+    // username check
+    if (await usernameCheck(username)) {
+      return res.status(400).json({ message: "Username is in use" });
     }
 
     if (password.length < 8) {
@@ -39,7 +73,8 @@ router.post("/signup", async (req, res) => {
         .status(400)
         .json({ message: "Password should be 7 characters or more" });
     }
-    user = new User({
+
+    const user = new User({
       name,
       username,
       email,
@@ -71,8 +106,7 @@ router.post("/signin", async (req, res) => {
 
   try {
     // check if already a google user
-    let GUser = await gUser.findOne({ email });
-    if (GUser) {
+    if (await gUserCheck(email)) {
       return res
         .status(400)
         .json({ message: "Email is linked to Sign-in with google." });
@@ -114,11 +148,15 @@ router.post("/o-auth", async (req, res) => {
 
   try {
     // checking if user already exists in normal db
-    let user = await User.findOne({ email });
-    if (user) {
+    if (await userCheck(email)) {
       return res
         .status(400)
         .json({ message: "Email linked to normal sign-in" });
+    }
+
+    // Username check
+    if (await usernameCheck(username)) {
+      return res.status(400).json({ message: "Username is in use" });
     }
 
     let GUser = await gUser.findOne({ email });

@@ -9,6 +9,19 @@ import jwt from "jsonwebtoken";
 
 const JWT_SECRET = "sentience as it is";
 
+// function to check if username already exists
+const usernameCheck = async (username) => {
+  const gcheck = await gUser.findOne({ username });
+  if (gcheck) {
+    return true;
+  }
+  const user = await User.findOne({ username });
+  if (user) {
+    return true;
+  }
+  return false;
+};
+
 // Fetch user profile data
 export const getUserProfile = async (req, res) => {
   try {
@@ -33,6 +46,10 @@ export const getUserProfile = async (req, res) => {
 // Update username
 export const updateUsername = async (req, res) => {
   const { newusername, username } = req.body;
+
+  if (await usernameCheck(newusername)) {
+    return res.status(400).json({ message: "Username is in use" });
+  }
   try {
     let user = await User.findOne({ username: req.body.username });
 
