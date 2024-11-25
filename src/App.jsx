@@ -7,6 +7,8 @@ import ProfilePage from "./pages/ProfilePage";
 import BlogsPage from "./pages/BlogSpace";
 import CreateBlogPage from "./pages/Create";
 import BlogDetailPage from "./pages/BlogDetailPage";
+import Footer from "./components/Footer";
+import About from "./pages/About";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -46,7 +48,7 @@ function App() {
               <Route path="/blog/:id" element={<BlogDetailPage />}></Route>
             </>
           )}
-
+          <Route path="/about" element={<About />} />
           <Route path="/flipper" element={<CardFlip />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>

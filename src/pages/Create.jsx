@@ -72,7 +72,7 @@ const CreateBlogPage = () => {
             placeholder="Blog Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 px-4 font-semibold text-2xl border rounded-sm bg-slate-300 placeholder:text-slate-400"
+            className="w-full p-2 px-4 font-semibold text-2xl border rounded-sm bg-slate-300 placeholder:text-slate-400 placeholder:text-center text-center"
           />
           <ReactQuill
             modules={module}

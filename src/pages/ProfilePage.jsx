@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState({
@@ -69,53 +70,56 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="container flex flex-col mt-28 p-4">
-      <h1 className="text-2xl font-bold mb-10 text-rose-200 mx-auto">
-        Profile Page
-      </h1>
-      <div className="bg-slate-300 p-6 mx-auto h-96 flex flex-col rounded-sm shadow-md">
-        <p className="mx-auto mb-2">
-          <strong>Name: </strong> {userData.name}
-        </p>
-        <p className="mx-auto mb-2">
-          <strong>Email: </strong> {userData.email}
-        </p>
-        <p className="mx-auto mb-4">
-          <strong>Username: </strong> {userData.username}
-          <button
-            onClick={() => setShowEditUsername(!showEditUsername)}
-            className="ml-4 text-blue-500 underline"
-          >
-            Edit
-          </button>
-        </p>
-
-        {showEditUsername && (
-          <form
-            onSubmit={handleUsernameChange}
-            className="w-40 flex flex-col mx-auto"
-          >
-            <input
-              type="text"
-              value={newUsername}
-              onChange={(e) => setNewUsername(e.target.value)}
-              className="border px-2 py-1 w-full mb-2 rounded-md"
-              placeholder="Enter new username"
-            />
-
-            {error && (
-              <p className="text-red-500 text-sm text-center mb-1">{error}</p>
-            )}
+    <>
+      <div className="container flex flex-col mt-28 p-4">
+        <h1 className="text-2xl font-bold mb-10 text-rose-200 mx-auto">
+          Profile Page
+        </h1>
+        <div className="bg-slate-300 p-6 mx-auto h-96 flex flex-col rounded-sm shadow-md">
+          <p className="mx-auto mb-2">
+            <strong>Name: </strong> {userData.name}
+          </p>
+          <p className="mx-auto mb-2">
+            <strong>Email: </strong> {userData.email}
+          </p>
+          <p className="mx-auto mb-4">
+            <strong>Username: </strong> {userData.username}
             <button
-              type="submit"
-              className="bg-blue-500 text-white px-2 py-1 mx-auto rounded-md"
+              onClick={() => setShowEditUsername(!showEditUsername)}
+              className="ml-4 text-blue-500 underline"
             >
-              Update
+              Edit
             </button>
-          </form>
-        )}
+          </p>
+
+          {showEditUsername && (
+            <form
+              onSubmit={handleUsernameChange}
+              className="w-40 flex flex-col mx-auto"
+            >
+              <input
+                type="text"
+                value={newUsername}
+                onChange={(e) => setNewUsername(e.target.value)}
+                className="border px-2 py-1 w-full mb-2 rounded-md"
+                placeholder="Enter new username"
+              />
+
+              {error && (
+                <p className="text-red-500 text-sm text-center mb-1">{error}</p>
+              )}
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-2 py-1 mx-auto rounded-md"
+              >
+                Update
+              </button>
+            </form>
+          )}
+        </div>
       </div>
-    </div>
+      <Footer classe="bg-slate-800" />
+    </>
   );
 };
 
