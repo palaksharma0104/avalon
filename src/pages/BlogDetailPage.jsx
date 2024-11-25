@@ -41,7 +41,7 @@ const BlogDetailPage = () => {
       </h1>
       <p className="text-gray-400 mx-auto mb-4 text-center">
         By: {`${blog.author.name} (${blog.author.username})`} <br />
-        Date: {new Date(blog.createdAt).toLocaleDateString()}
+        Posted: {new Date(blog.createdAt).toLocaleDateString()}
       </p>
 
       <ReactQuill
