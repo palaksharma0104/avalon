@@ -119,7 +119,7 @@ function Homepage() {
         </LampContainer>
         <div>{showSignup && <Signup closeSignup={handleCloseSignup} />}</div>
 
-        <div className="relative bg-rose-500 backdrop-blur-lg bg-opacity-20  w-1/3 mx-auto rounded-sm px-10 py-5 -mt-56 ">
+        <div className="animate-appear relative bg-rose-500 backdrop-blur-lg bg-opacity-20  w-1/3 mx-auto rounded-sm px-10 py-5 -mt-56 ">
           <div className="p-5">
             <h3 className="text-2xl mb-0.5 font-medium"></h3>
             <p className="mb-4 text-sm font-normal text-gray-800"></p>

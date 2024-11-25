@@ -61,61 +61,46 @@ function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 w-full z-10 transition-shadow duration-300 ${
-          isScrolled ? "shadow-lg" : ""
-        } backdrop-blur-xl`}
+          isScrolled ? "shadow-lg bg-slate-800 bg-opacity-20" : ""
+        } backdrop-blur-xl `}
       >
         <div
           className={`max-w-3xl lg:max-w-7xl mx-auto flex px-12 transition-all duration-200 items-center justify-between ${
-            isScrolled ? "h-10" : "h-20"
+            isScrolled ? "h-16" : "h-20"
           }`}
         >
           <div
             className={`flex items-center transition-all duration-4 ${
-              isScrolled ? "scale-[60%]" : "scale-100"
+              isScrolled ? "scale-[80%]" : "scale-100"
             }`}
           >
             <div
-              className="title ml-5 hover:scale-110 transition-scale duration-200 ease-in-out"
               onClick={() => {
                 navigate("/");
               }}
             >
-              <span className="highlight">
-                <span className="text text-xl mx-2 mb-1 font-semibold text-amber-600 hover:text-amber-700 cursor-pointer">
-                  Avalon
-                </span>
-              </span>
+              <button
+                className="px-8 py-0.5 border-2 border-rose-200 uppercase bg-rose-200 text-black transition duration-200 ease-in-out hover:scale-105 text-md shadow-[1px_1px_rgba(253,164,175,1),2px_2px_rgba(253,164,175,1),3px_3px_rgba(253,164,175,1),4px_4px_rgba(253,164,175,1),5px_5px_0px_0px_rgba(253,164,175,1)]
+ "
+              >
+                Avalon
+              </button>
             </div>
           </div>
 
-          <div
-            className={`flex space-x-8 transition-all duration-4 ${
-              isScrolled ? "scale-[85%]" : "scale-100"
-            }`}
-          >
-            <a
-              href="#"
-              className="text-rose-300 hover:text-rose-400 hover:font-bold transition-all duration-200 ease-in-out"
-            >
-              Today
-            </a>
+          <div className={` transition-all mx-auto duration-4 `}>
             <a
               href="/create"
-              className="text-rose-300 hover:text-rose-400 hover:font-bold transition-all duration-200 ease-in-out"
+              className="hover:bg-rose-100 p-3 px-4 hover:rounded-full font-semibold hover:bg-opacity-20 text-rose-700 hover:text-rose-400  transition-all duration-200 ease-in-out"
             >
-              Create a Post
-            </a>
-            <a
-              href="#"
-              className="text-rose-300 hover:text-rose-400 hover:font-bold transition-all duration-200 ease-in-out"
-            >
-              About
+              <span className="text-2xl font-thin">+</span> Create
             </a>
           </div>
           {loggedIn ? (
             <>
               <ul>
                 {/* the dropdown thingy */}
+
                 <li className="group relative">
                   <a className="hover:text-rose-800 hover:fill-rose-800 cursor-pointer text-rose-300 fill-rose-300 font-semibold text-[15px] block">
                     {user.username}

@@ -26,7 +26,7 @@ const BlogsPage = () => {
   return (
     <div className="p-6 mt-28 px-52 flex flex-col ">
       <h1 className="text-2xl font-bold mb-10 mx-auto text-rose-200">Blogs</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1  gap-8">
         {blogs.map((blog) => (
           <div
             key={blog._id}
