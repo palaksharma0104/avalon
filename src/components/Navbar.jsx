@@ -91,7 +91,7 @@ function Navbar() {
           <div className={` transition-all mx-auto duration-4 `}>
             <a
               href="/create"
-              className="hover:bg-rose-100 p-3 px-4 hover:rounded-full font-semibold hover:bg-opacity-20 text-rose-700 hover:text-rose-400  transition-all duration-200 ease-in-out"
+              className="hover:bg-rose-100 p-3 px-4 -ml-24 hover:rounded-full font-semibold hover:bg-opacity-20 text-rose-700 hover:text-rose-400  transition-all duration-200 ease-in-out"
             >
               <span className="text-2xl font-thin">+</span> Create
             </a>
