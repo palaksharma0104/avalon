@@ -154,14 +154,13 @@ router.post("/o-auth", async (req, res) => {
         .json({ message: "Email linked to normal sign-in" });
     }
 
-    // Username check
-    if (await usernameCheck(username)) {
-      return res.status(400).json({ message: "Username is in use" });
-    }
-
     let GUser = await gUser.findOne({ email });
     // if user doesnt exist:
     if (!GUser) {
+      // Username check
+      if (await usernameCheck(username)) {
+        return res.status(400).json({ message: "Username is in use" });
+      }
       if (password.length < 8) {
         return res
           .status(400)

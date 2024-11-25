@@ -33,6 +33,7 @@ router.get("/blogs", async (req, res) => {
 
 router.post("/saveblog", async (req, res) => {
   const { title, content, author } = req.body;
+  console.log(content);
   // author is an id. and then find a user from the other one w the email, then get the id and then replace author with that id.
   if (!title || !content) {
     return res.status(400).json({ message: "Title and content are required" });
@@ -65,6 +66,30 @@ router.post("/saveblog", async (req, res) => {
   } catch (error) {
     console.error("Error creating blog:", error);
     res.status(500).json({ message: "Error creating blog" });
+  }
+});
+
+router.get("/blogs/:id", async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ message: "Blog not found" });
+
+    // Determine the user collection based on `userType`
+    const userCollection = blog.userType === "gUser" ? "gUser" : "User";
+    const author = await mongoose
+      .model(userCollection)
+      .findById(blog.author, "username name");
+
+    // Add the populated author object to the response
+    const populatedBlog = {
+      ...blog._doc,
+      author,
+    };
+
+    res.status(200).json(populatedBlog);
+  } catch (error) {
+    console.error("Error fetching blog:", error);
+    res.status(500).json({ message: "Error fetching blog", error });
   }
 });
 
