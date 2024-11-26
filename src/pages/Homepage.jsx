@@ -5,7 +5,7 @@ import Signup from "../components/Signup";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { LampContainer } from "../components/ui/Lamp";
+import { LampContainer } from "../components/ui/lamp";
 
 function Homepage() {
   const [showSignup, setShowSignup] = useState(false);
