@@ -69,7 +69,7 @@ router.post("/saveblog", async (req, res) => {
   }
 });
 
-router.get("/blogs/:id", async (req, res) => {
+router.get("/blog/:id", async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) return res.status(404).json({ message: "Blog not found" });
@@ -90,6 +90,49 @@ router.get("/blogs/:id", async (req, res) => {
   } catch (error) {
     console.error("Error fetching blog:", error);
     res.status(500).json({ message: "Error fetching blog", error });
+  }
+});
+
+router.get("/user-blogs/:userId", async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    // Find blogs authored by the user
+    const blogs = await Blog.find({ author: userId }).sort({ createdAt: -1 });
+
+    // Populate author details
+    const populatedBlogs = await Promise.all(
+      blogs.map(async (blog) => {
+        const userCollection = blog.userType === "gUser" ? "gUser" : "User";
+        const user = await mongoose
+          .model(userCollection)
+          .findById(blog.author, "username name");
+        return {
+          ...blog._doc,
+          author: user,
+        };
+      })
+    );
+
+    res.status(200).json(populatedBlogs);
+  } catch (error) {
+    console.error("Error fetching user's blogs:", error);
+    res.status(500).json({ message: "Error fetching user's blogs" });
+  }
+});
+
+router.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deletedBlog = await Blog.findByIdAndDelete(id);
+    if (!deletedBlog)
+      return res.status(404).json({ message: "Blog not found" });
+
+    res.status(200).json({ message: "Blog deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting blog:", error);
+    res.status(500).json({ message: "Error deleting blog" });
   }
 });
 
