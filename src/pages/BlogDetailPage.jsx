@@ -5,7 +5,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
 
 const BlogDetailPage = () => {
-  const { id } = useParams(); // Extract the blog ID from the URL
+  const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import { Link } from "react-router-dom";
 
 const UserBlogsPage = () => {
   const [userBlogs, setUserBlogs] = useState([]);
@@ -71,17 +72,19 @@ const UserBlogsPage = () => {
             key={blog._id}
             className="bg-rose-100 p-4 shadow rounded-sm hover:shadow-lg transition"
           >
-            <h2 className="text-xl font-semibold mb-2">{blog.title}</h2>
-            <div
-              className="text-gray-700 mb-4"
-              dangerouslySetInnerHTML={{
-                __html: blog.content.substring(0, 100),
-              }}
-            />
-            <p className="text-sm text-gray-500">
-              By: {`${blog.author.name} (${blog.author.username})`} |{" "}
-              {new Date(blog.createdAt).toLocaleDateString()}
-            </p>
+            <Link key={blog._id} to={`/blog/${blog._id}`}>
+              <h2 className="text-xl font-semibold mb-2">{blog.title}</h2>
+              <div
+                className="text-gray-700 mb-4"
+                dangerouslySetInnerHTML={{
+                  __html: blog.content.substring(0, 100),
+                }}
+              />
+              <p className="text-sm text-gray-500">
+                By: {`${blog.author.name} (${blog.author.username})`} |{" "}
+                {new Date(blog.createdAt).toLocaleDateString()}
+              </p>
+            </Link>
             <div
               className="flex flex-row items-center cursor-pointer hover:fill-rose-900 mt-4"
               onClick={() => handleDeleteClick(blog._id)}

@@ -48,7 +48,7 @@ export default function About() {
             Avalon—because your stories deserve a place as magical as you.
           </p>
           <p className="mt-3 text-center text-amber-700 text-xs font-bold">
-            (p.s. Watch the halo light up once you've logged in)
+            (p.s. watch the halo light up once you've logged in)
           </p>
         </motion.div>
       </div>
