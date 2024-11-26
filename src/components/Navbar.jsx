@@ -88,7 +88,11 @@ function Navbar() {
             </div>
           </div>
 
-          <div className={` transition-all mx-auto duration-4 `}>
+          <div
+            className={` transition-all mx-auto duration-4 ${
+              !loggedIn && "hidden"
+            }`}
+          >
             <a
               href="/create"
               className="hover:bg-rose-100 p-3 px-4 -ml-24 hover:rounded-full font-semibold hover:bg-opacity-20 text-rose-700 hover:text-rose-400  transition-all duration-200 ease-in-out"
@@ -130,6 +134,14 @@ function Navbar() {
                         className="hover:text-rose-400 hover:fill-rose-400 text-gray-600 font-semibold text-[15px] block"
                       >
                         Profile
+                      </a>
+                    </li>
+                    <li className="border-b py-2">
+                      <a
+                        href="/user-blog"
+                        className="hover:text-rose-400 hover:fill-rose-400 text-gray-600 font-semibold text-[15px] block"
+                      >
+                        My Posts
                       </a>
                     </li>
                     <li className="border-b py-3 cursor-pointer">
@@ -177,7 +189,7 @@ function Navbar() {
             >
               <button
                 onClick={handleLoginClick}
-                className="px-4 py-2 items-center bg-[#cfb6eb] text-white rounded-full hover:bg-amber-400 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out"
+                className="px-3 py-2 items-center bg-rose-800 text-white rounded-sm hover:bg-rose-500 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out"
               >
                 Log in
               </button>
@@ -185,7 +197,7 @@ function Navbar() {
                 onClick={() => {
                   setShowSignup(true);
                 }}
-                className="px-4 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out"
+                className="px-3 py-2 bg-gray-200 text-gray-900 rounded-sm hover:bg-gray-300 hover:scale-105 hover:shadow-xl transition-all duration-200 ease-in-out"
               >
                 Sign up
               </button>

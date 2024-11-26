@@ -7,8 +7,8 @@ import ProfilePage from "./pages/ProfilePage";
 import BlogsPage from "./pages/BlogSpace";
 import CreateBlogPage from "./pages/Create";
 import BlogDetailPage from "./pages/BlogDetailPage";
-import Footer from "./components/Footer";
 import About from "./pages/About";
+import UserBlogsPage from "./pages/UserBlogs";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -46,6 +46,7 @@ function App() {
               <Route path="/" element={<BlogsPage />}></Route>
               <Route path="/create" element={<CreateBlogPage />}></Route>
               <Route path="/blog/:id" element={<BlogDetailPage />}></Route>
+              <Route path="/user-blog" element={<UserBlogsPage />}></Route>
             </>
           )}
           <Route path="/about" element={<About />} />
