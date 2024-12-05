@@ -10,7 +10,7 @@ Backend server setup files are included in the `backend` branch.
 To setup backend:
 - Clone the backend branch to a seperate folder.
   ```bash
-  git clone -b backend "https://github.com/palaksharma0104/avalon.hoy"
+  git clone -b backend "https://github.com/palaksharma0104/avalon.git"
   ```
 
 - Install the dependencies and run the `development` server.
