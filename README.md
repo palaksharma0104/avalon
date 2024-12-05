@@ -48,3 +48,8 @@ To setup backend:
 
 - Go to http://localhost:5173 (default Vite port).
 
+## Authors💖
+
+- [@palaksharma0104](https://github.com/palaksharma0104)
+- [@friedavocadoes](https://www.github.com/friedavocadoes)
+  
