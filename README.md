@@ -14,7 +14,7 @@ To setup backend:
   ```
 
 - Install the dependencies and run the `development` server.
-  ```bash
+  ```node
   cd avalon
   npm i
   npm run dev
@@ -22,6 +22,13 @@ To setup backend:
   
 
 ## Installation
+
+- Clone the repositor
+  ```bash
+  git clone "https://github.com/palaksharma0104/avalon.git"
+  cd avalon
+  ```
+
 - Development script:
   ```node
   npm i
