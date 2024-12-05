@@ -15,7 +15,7 @@ To setup backend:
 
 - Install the dependencies and run the `development` server.
   ```bash
-  cd backend
+  cd avalon
   npm i
   npm run dev
   ```
